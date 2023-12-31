@@ -1,0 +1,9 @@
+dist
+node_modules
+.env
+.yarn
+.yarnrc.yml
+docker-compose.yml
+*.log
+.DS_Store
+assets/*

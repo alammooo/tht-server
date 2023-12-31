@@ -1,0 +1,4 @@
+DATABASE_URL = postgresql://postgres:GH7yjK79cMOARNPU@db.yadozurwqvajoaunlswd.supabase.co:5432/postgres
+JWT_SECRET = gravityfalls
+FE_ORIGIN = http://localhost:3000
+DB_PASSWORD = GH7yjK79cMOARNPU
