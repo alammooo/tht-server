@@ -7,12 +7,13 @@ import {
   getOneController,
   updateController,
 } from '@/controllers/product.controllers';
+import multerUpload from '@/utils/multerUpload';
 
 const productRouter = express.Router();
 
 productRouter.get('', getAllController);
 productRouter.get('/:productId', getOneController);
-productRouter.post('/', createController);
+productRouter.post('/', multerUpload.single('file'), createController);
 productRouter.patch('/:productId', updateController);
 productRouter.delete('/:productId', deleteController);
 

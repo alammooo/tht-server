@@ -11,12 +11,21 @@ export type Product = {
   deletedAt: Date | null;
 };
 
-export type CreateInput = Omit<Product, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>;
+export type CreateInput = {
+  file: Express.Multer.File
+  payload: Omit<Product, 'image' | 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>;
+};
 
 export type UpdateInput = Partial<Product>;
 
 export type FindInput = {
-  id: number;
+  id?: number;
+  categoryId?: number;
+  name?: string;
+};
+
+export type Pagination = {
+  offset?: number;
 };
 
 export type DeleteInput = {

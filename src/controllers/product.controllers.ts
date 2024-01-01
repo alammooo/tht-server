@@ -7,6 +7,7 @@ import {
 } from '@/services/product.services';
 import { ExpressFc } from '@/types';
 import {
+  allValidator,
   createValidator,
   deleteValidator,
   findValidator,
@@ -15,7 +16,8 @@ import {
 
 export const getAllController: ExpressFc = async (req, res, next) => {
   try {
-    const result = await getAllService();
+    const { query } = await allValidator.validate(req);
+    const result = await getAllService(query);
     res.status(200).json(result);
   } catch (error) {
     next(error);
@@ -34,9 +36,9 @@ export const getOneController: ExpressFc = async (req, res, next) => {
 
 export const createController: ExpressFc = async (req, res, next) => {
   try {
-    const { body } = await createValidator.validate(req);
-    await createService(body);
-    res.status(200).json({ message: 'success update product' });
+    const { file, body } = await createValidator.validate(req, { stripUnknown: true });
+    await createService({ file, payload: body });
+    res.status(200).json({ message: 'success create product' });
   } catch (error) {
     next(error);
   }
