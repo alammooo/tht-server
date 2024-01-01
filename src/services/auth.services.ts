@@ -1,10 +1,10 @@
 import jwt from 'jsonwebtoken';
 
 import prisma from '@/config/prisma';
-import { CreateInput, GenerateInput, UserSchema } from '@/types/user.types';
+import { CreateInput, GenerateInput, User } from '@/types/user.types';
 
-export const getUserByUsername = async (username: string) => {
-  const result = await prisma.user.findFirst({ where: { username: username } });
+export const getUserByUsername = async (email: string) => {
+  const result = await prisma.user.findFirst({ where: { email: email } });
   return result;
 };
 

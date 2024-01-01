@@ -8,6 +8,6 @@ import authentication from '@/middleware/authentication';
 const authRouter = express.Router();
 
 authRouter.post('/login', login);
-authRouter.post('/register', authentication, adminOnly, createController);
+authRouter.post('/register', authentication, createController);
 
 export default authRouter;

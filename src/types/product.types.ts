@@ -1,4 +1,3 @@
-// Define the corresponding type for Product
 export type Product = {
   id: number;
   name: string;

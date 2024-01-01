@@ -1,5 +1,4 @@
-// Define the corresponding type for Product
-export type Product = {
+export type Category = {
   id: number;
   name: string;
   createdAt: Date;
@@ -7,9 +6,9 @@ export type Product = {
   deletedAt: Date | null;
 };
 
-export type CreateInput = Omit<Product, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>;
+export type CreateInput = Omit<Category, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>;
 
-export type UpdateInput = Partial<Product>;
+export type UpdateInput = Partial<Category>;
 
 export type FindInput = {
   id: number;

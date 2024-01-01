@@ -2,21 +2,13 @@ import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
 import prisma from '@/config/prisma';
-import { UserType } from '@/enums/UserType';
+import { User } from '@/types/user.types';
 
 import ErrorHandler from './error-handler/errorHandler';
 
 declare module 'express-serve-static-core' {
   interface Request {
-    user: {
-      id: number;
-      userType?: UserType;
-      username: string;
-      phoneNumber?: string | null;
-      fullName: string | null;
-      email: string | null;
-      profilePicture: string | null;
-    };
+    user: Partial<User>;
   }
 }
 
@@ -31,11 +23,9 @@ const authentication = async (req: Request, res: Response, next: NextFunction) =
     });
     req.user = {
       id: user.id,
-      // userType: user.userType,
-      username: user.username,
-      phoneNumber: user.phoneNumber,
-      fullName: user.fullName,
       email: user.email,
+      fullName: user.fullName,
+      position: user.position,
       profilePicture: user.profilePicture,
     };
     next();
